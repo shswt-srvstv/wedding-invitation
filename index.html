@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5e0c18">
+
+<!-- ✏️ EDIT THESE: WhatsApp / social previews read these tags, not the JS config below -->
+<title>Rohan &amp; Meera · Wedding Invitation</title>
+<meta name="description" content="You are cordially invited to the wedding of Rohan & Meera on Sunday, 14th February 2027 at The Grand Palace, Jaipur.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rohan &amp; Meera · Wedding Invitation">
+<meta property="og:description" content="Save the Date · Sunday, 14th February 2027 · The Grand Palace, Jaipur">
+<meta property="og:image" content="preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" id="favicon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wine:#5e0c18; --wine-2:#7a1424; --wine-3:#2b060c;
+  --gilt:#c4993f; --gilt-hi:#ecd08b; --gilt-lo:#80612a;
+  --paper:#f7eedc; --paper-2:#ecdfc2; --text:#2f1a12;
+  --script:'Great Vibes',cursive; --serif:'Cormorant Garamond',Georgia,serif;
+  --caps:'Cinzel',serif; --label:'Marcellus',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--serif);background:var(--paper);color:var(--text);line-height:1.6;overflow-x:hidden}
+body.locked{overflow:hidden;height:100vh}
+sup{font-size:.4em;vertical-align:super;line-height:0}
+
+/* ---------- Intro stage ---------- */
+.stage{position:fixed;inset:0;z-index:1000;overflow:hidden;background:#120204}
+.stage.done{pointer-events:none;background:transparent;transition:background 1.2s ease 1.6s}
+.drape{
+  position:absolute;top:0;bottom:0;width:51%;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.45),transparent 18%,transparent 75%,rgba(0,0,0,.55)),
+    repeating-linear-gradient(90deg,#3d0710 0 6px,#8c1a2b 18px,#a3283a 24px,#6a0f1d 34px,#3d0710 46px);
+  transition:transform 2.8s cubic-bezier(.65,.05,.3,1);
+}
+.drape.l{left:0;box-shadow:inset -14px 0 30px rgba(0,0,0,.6)}
+.drape.r{right:0;box-shadow:inset 14px 0 30px rgba(0,0,0,.6)}
+.drape::after{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(var(--gilt-hi),var(--gilt-lo))}
+.drape.l::after{right:0}.drape.r::after{left:0}
+.stage.done .drape.l{transform:translateX(-104%)}
+.stage.done .drape.r{transform:translateX(104%)}
+.valance{
+  position:absolute;left:0;right:0;top:0;height:58px;z-index:2;
+  background:linear-gradient(180deg,#f3dc9c,var(--gilt) 30%,var(--gilt-lo) 70%,#4b3412);
+  box-shadow:0 8px 18px rgba(0,0,0,.55);
+  -webkit-mask:radial-gradient(14px at 50% 100%,transparent 98%,#000) 0 0/28px 100%;
+          mask:radial-gradient(14px at 50% 100%,transparent 98%,#000) 0 0/28px 100%;
+  transition:transform 1s ease 1.9s,opacity 1s ease 1.9s;
+}
+.stage.done .valance{transform:translateY(-100%);opacity:0}
+.gate{
+  position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px;background:radial-gradient(circle at 50% 45%,rgba(0,0,0,.05),rgba(0,0,0,.6));
+  transition:opacity .6s ease,transform .6s ease;
+}
+.stage.done .gate{opacity:0;transform:scale(1.06)}
+.seal{
+  width:104px;height:104px;border-radius:50%;display:grid;place-items:center;margin-bottom:26px;
+  background:radial-gradient(circle at 40% 35%,#fffaf0,var(--paper-2));
+  border:2px solid var(--gilt);outline:1px solid rgba(196,153,63,.55);outline-offset:7px;
+  animation:halo 2.6s ease-in-out infinite alternate;
+}
+.seal span{font-family:var(--script);font-size:46px;color:var(--wine);line-height:1}
+@keyframes halo{from{box-shadow:0 0 30px rgba(236,208,139,.45)}to{box-shadow:0 0 70px rgba(236,208,139,.85)}}
+.gate .invite{font-style:italic;color:var(--paper);letter-spacing:2px;font-size:18px;text-shadow:0 2px 8px #000}
+.gate .couple{font-family:var(--script);font-size:48px;color:var(--gilt-hi);text-shadow:0 3px 16px #000;margin:2px 0 36px;line-height:1.1}
+.gate .invite,.gate .couple,.open-btn{animation:rise .9s both}
+.gate .couple{animation-delay:.2s}
+.open-btn{
+  animation:rise .9s .4s both,beat 2.4s 1.3s ease-in-out infinite;
+  font:14px var(--label);letter-spacing:4px;text-transform:uppercase;color:#fff7e3;cursor:pointer;
+  padding:16px 34px;border-radius:40px;border:1.5px solid var(--gilt-hi);
+  background:linear-gradient(150deg,var(--gilt),var(--gilt-lo));
+  box-shadow:0 10px 28px rgba(196,153,63,.45),0 0 0 7px rgba(196,153,63,.14);
+}
+.open-btn:active{transform:scale(.96)}
+@keyframes beat{50%{box-shadow:0 12px 36px rgba(196,153,63,.7),0 0 0 13px rgba(196,153,63,.04)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- Music ---------- */
+.music{
+  position:fixed;right:18px;bottom:18px;z-index:500;width:48px;height:48px;border-radius:50%;
+  display:none;place-items:center;cursor:pointer;border:1.5px solid var(--gilt-hi);
+  background:linear-gradient(150deg,var(--gilt),var(--gilt-lo));box-shadow:0 6px 18px rgba(94,12,24,.3);
+}
+.music.show{display:grid}
+.music svg{width:20px;height:20px;fill:#fff7e3}
+.music.playing svg{animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Page ---------- */
+main{position:relative;background:var(--paper)}
+main::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 .38 0 0 0 0 .24 0 0 0 0 .1 0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+}
+section{position:relative;z-index:2;padding:72px 26px;text-align:center}
+@media(min-width:520px){main{max-width:500px;margin:0 auto;box-shadow:0 0 70px rgba(0,0,0,.18)}body{background:#e6d6b4}}
+
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gilt);font-size:11px;margin:18px auto}
+.divider::before,.divider::after{content:"";width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gilt),transparent)}
+
+.eyebrow{font:12px var(--label);letter-spacing:4px;text-transform:uppercase;color:var(--gilt-lo)}
+.script-title{font-family:var(--script);font-size:52px;color:var(--wine);line-height:1.05;font-weight:400}
+
+/* Cover */
+#cover{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:84px 24px 110px}
+.corner{position:absolute;width:86px;height:86px;opacity:.6}
+.corner.tl{top:14px;left:14px}.corner.tr{top:14px;right:14px;transform:scaleX(-1)}
+.corner.bl{bottom:14px;left:14px;transform:scaleY(-1)}.corner.br{bottom:14px;right:14px;transform:scale(-1)}
+.crest{width:94px;height:94px;border-radius:50%;display:grid;place-items:center;margin-bottom:26px;
+  border:1.5px solid var(--gilt);background:linear-gradient(150deg,#fbf3e1,var(--paper-2));
+  box-shadow:0 6px 22px rgba(94,12,24,.18),inset 0 0 0 6px #fbf3e1,inset 0 0 0 7px rgba(128,97,42,.6)}
+.crest span{font-family:var(--script);font-size:42px;color:var(--wine);line-height:1}
+.blessing{font-style:italic;color:var(--wine);font-size:16px;margin-bottom:18px;letter-spacing:.5px}
+.verse{font-size:17px;line-height:1.75;max-width:320px;margin:0 auto 26px}
+.person{font-family:var(--script);font-size:70px;line-height:1;color:var(--wine);text-shadow:0 2px 4px rgba(94,12,24,.12)}
+.person.gold{background:linear-gradient(120deg,var(--gilt-lo),var(--gilt) 50%,var(--gilt-lo));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.lineage{font-style:italic;font-size:15.5px;color:var(--wine);margin:8px 0 4px}
+.lineage::before,.lineage::after{content:"✦";color:var(--gilt);font-size:9px;margin:0 8px;vertical-align:middle}
+.amp{display:block;font:20px var(--label);letter-spacing:8px;text-transform:uppercase;color:var(--wine);margin:14px 0 8px}
+.scroll-hint{position:absolute;left:0;right:0;bottom:26px;font:11px var(--label);letter-spacing:4px;text-transform:uppercase;color:var(--gilt-lo)}
+.scroll-hint::after{content:"";display:block;width:1px;height:24px;margin:8px auto 0;background:var(--gilt);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.stagger>*{opacity:0}
+.stagger.go>*{animation:rise 1s forwards}
+.stagger.go>*:nth-child(5){animation-delay:.15s}.stagger.go>*:nth-child(6){animation-delay:.35s}
+.stagger.go>*:nth-child(7){animation-delay:.55s}.stagger.go>*:nth-child(8){animation-delay:.75s}
+.stagger.go>*:nth-child(9){animation-delay:1.1s}
+
+/* Scratch */
+#date{background:radial-gradient(ellipse at center,#fdf7e7,#eadab3)}
+#date .eyebrow{margin:4px 0 28px}
+.ticket{position:relative;width:min(280px,82vw);aspect-ratio:14/9;margin:0 auto;border-radius:10px;overflow:hidden;
+  border:2px solid var(--gilt);box-shadow:0 16px 40px rgba(94,12,24,.25)}
+.ticket-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(150deg,#fff9ea,#f4e3bd)}
+.ticket-face .wd{font:13px var(--label);letter-spacing:5px;text-transform:uppercase;color:var(--gilt-lo)}
+.ticket-face .dm{font-family:var(--script);font-size:62px;color:var(--wine);line-height:1.15}
+.ticket-face .yr{font:20px var(--caps);letter-spacing:8px;color:var(--wine)}
+#foil{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .8s}
+.note{margin-top:18px;font-style:italic;color:var(--gilt-lo);font-size:15px}
+#burst{position:fixed;inset:0;pointer-events:none;z-index:900}
+
+/* Countdown */
+#count{background:linear-gradient(180deg,#eadab3,var(--paper))}
+#count .eyebrow{margin:4px 0 28px}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:380px;margin:0 auto}
+.tick{padding:16px 4px 12px;border:1px solid var(--gilt);background:linear-gradient(150deg,#fff9ea,#efdfb8);
+  box-shadow:0 6px 16px rgba(94,12,24,.14),inset 0 0 0 3px #fff9ea,inset 0 0 0 4px rgba(196,153,63,.4)}
+.tick b{display:block;font:600 32px var(--caps);color:var(--wine);line-height:1}
+.tick small{display:block;margin-top:7px;font:9px var(--label);letter-spacing:2px;text-transform:uppercase;color:var(--gilt-lo)}
+.over{font-family:var(--script);font-size:34px;color:var(--wine);margin-top:10px}
+
+/* Venue */
+#venue{background:linear-gradient(180deg,var(--paper),#f0e2c6)}
+.frame{max-width:360px;margin:0 auto;padding:38px 26px;background:rgba(255,251,238,.75);border:1px solid var(--gilt);
+  box-shadow:0 16px 40px rgba(94,12,24,.14);outline:1px solid rgba(196,153,63,.4);outline-offset:-8px}
+.frame .eyebrow{margin-bottom:22px}
+.when b{display:block;font:500 17px var(--caps);letter-spacing:2px;color:var(--wine)}
+.when{font-size:17px}
+.place{font-family:var(--script);font-size:46px;color:var(--wine);line-height:1.1;margin:8px 0 2px}
+.city{font-style:italic;font-size:18px;color:var(--gilt-lo);letter-spacing:1px}
+.map{display:inline-block;margin-top:24px;padding:11px 26px;background:var(--wine);color:var(--paper);text-decoration:none;
+  font:12px var(--label);letter-spacing:3px;text-transform:uppercase;border:1px solid var(--gilt);box-shadow:0 5px 14px rgba(94,12,24,.3)}
+
+/* Footer */
+#outro{background:var(--wine-3);color:var(--paper);padding:54px 24px 46px}
+#outro .divider{color:var(--gilt-hi)}
+#outro .divider::before,#outro .divider::after{background:linear-gradient(90deg,transparent,var(--gilt-hi),transparent)}
+.compl{font-style:italic;color:var(--gilt-hi);letter-spacing:1px}
+.family{font-family:var(--script);font-size:40px;color:var(--gilt-hi);margin-top:4px}
+.stars{color:var(--gilt);letter-spacing:10px;margin:16px 0 8px;font-size:14px}
+.closing{font-style:italic;font-size:14px;color:rgba(247,238,220,.65)}
+
+.fade{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.fade.in{opacity:1;transform:none}
+
+@media(max-width:370px){
+  section{padding:60px 18px}.person{font-size:58px}.script-title{font-size:44px}
+  .ticket-face .dm{font-size:52px}.tick b{font-size:25px}.place{font-size:38px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.stagger>*,.fade{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<audio id="song" src="song.mp3" preload="auto" loop></audio>
+<button class="music" id="music" type="button" aria-label="Pause music">
+  <svg viewBox="0 0 24 24"><path d="M12 3v10.6A4 4 0 1 0 14 17V7h4V3z"/></svg>
+</button>
+
+<main>
+  <!-- COVER -->
+  <section id="cover" class="stagger">
+    <svg class="corner tl" viewBox="0 0 100 100" aria-hidden="true"><path d="M4 4c26 2 42 14 52 30s24 26 40 28" fill="none" stroke="#c4993f" stroke-width="1.2"/><path d="M4 4c2 26 14 42 30 52" fill="none" stroke="#c4993f" stroke-width=".8" opacity=".7"/><g fill="#c4993f"><circle cx="20" cy="9" r="4.5" opacity=".6"/><circle cx="9" cy="22" r="3.5" opacity=".5"/><circle cx="46" cy="26" r="3.5" opacity=".55"/></g><circle cx="33" cy="16" r="3" fill="#5e0c18" opacity=".45"/><path d="M14 16c6-1 10 1 12 6M24 34c6 0 10 3 11 8" stroke="#5e0c18" stroke-width=".9" fill="none" opacity=".45"/></svg>
+    <svg class="corner tr" viewBox="0 0 100 100" aria-hidden="true"><path d="M4 4c26 2 42 14 52 30s24 26 40 28" fill="none" stroke="#c4993f" stroke-width="1.2"/><g fill="#c4993f"><circle cx="20" cy="9" r="4.5" opacity=".6"/><circle cx="46" cy="26" r="3.5" opacity=".55"/></g><circle cx="33" cy="16" r="3" fill="#5e0c18" opacity=".45"/></svg>
+    <svg class="corner bl" viewBox="0 0 100 100" aria-hidden="true"><path d="M4 4c26 2 42 14 52 30s24 26 40 28" fill="none" stroke="#c4993f" stroke-width="1.2"/><g fill="#c4993f"><circle cx="20" cy="9" r="4.5" opacity=".6"/><circle cx="46" cy="26" r="3.5" opacity=".55"/></g><circle cx="33" cy="16" r="3" fill="#5e0c18" opacity=".45"/></svg>
+    <svg class="corner br" viewBox="0 0 100 100" aria-hidden="true"><path d="M4 4c26 2 42 14 52 30s24 26 40 28" fill="none" stroke="#c4993f" stroke-width="1.2"/><g fill="#c4993f"><circle cx="20" cy="9" r="4.5" opacity=".6"/><circle cx="46" cy="26" r="3.5" opacity=".55"/></g><circle cx="33" cy="16" r="3" fill="#5e0c18" opacity=".45"/></svg>
+
+    <div class="crest"><span data-k="initials"></span></div>
+    <p class="blessing" data-k="blessing"></p>
+    <p class="verse" data-k="verse" data-html></p>
+    <div>
+      <div class="person" data-k="groom"></div>
+      <p class="lineage" data-k="groomParents"></p>
+      <span class="amp">with</span>
+      <div class="person gold" data-k="bride"></div>
+      <p class="lineage" data-k="brideParents"></p>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <!-- SCRATCH TO REVEAL -->
+  <section id="date">
+    <div class="fade">
+      <h2 class="script-title">Save the Date</h2>
+      <p class="eyebrow">Scratch to Reveal</p>
+      <div class="ticket">
+        <div class="ticket-face">
+          <div class="wd" data-k="weekday"></div>
+          <div class="dm" data-k="dayMonth" data-html></div>
+          <div class="yr" data-k="year"></div>
+        </div>
+        <canvas id="foil" aria-label="Scratch the gold to reveal the date"></canvas>
+      </div>
+      <p class="note">✦ Use your finger to scratch the gold ✦</p>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section id="count">
+    <div class="fade">
+      <h2 class="script-title">The Countdown</h2>
+      <p class="eyebrow">Until the Big Day</p>
+      <div class="clock">
+        <div class="tick"><b id="d">00</b><small>Days</small></div>
+        <div class="tick"><b id="h">00</b><small>Hours</small></div>
+        <div class="tick"><b id="m">00</b><small>Mins</small></div>
+        <div class="tick"><b id="s">00</b><small>Secs</small></div>
+      </div>
+      <p class="over" id="over" hidden>The big day is here!</p>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section id="venue">
+    <div class="frame fade">
+      <div class="divider">✦</div>
+      <h2 class="script-title">The Celebration</h2>
+      <p class="eyebrow" data-k="ceremony"></p>
+      <p class="when"><b data-k="dateLong" data-html></b><span data-k="time"></span></p>
+      <div class="divider">❖</div>
+      <p class="eyebrow" style="margin-bottom:4px">Venue</p>
+      <h3 class="place" data-k="venue"></h3>
+      <p class="city" data-k="city"></p>
+      <a class="map" id="maplink" target="_blank" rel="noopener">View on Map</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section id="outro">
+    <div class="divider">❖</div>
+    <p class="compl">With compliments from</p>
+    <p class="family" data-k="family"></p>
+    <div class="stars">✦ ❖ ✦</div>
+    <p class="closing">Your presence will make our day complete</p>
+  </section>
+</main>
+
+<!-- INTRO CURTAIN -->
+<div class="stage" id="stage">
+  <div class="drape l"></div><div class="drape r"></div>
+  <div class="valance"></div>
+  <div class="gate">
+    <div class="seal"><span data-k="initials"></span></div>
+    <p class="invite">~ You are cordially invited ~</p>
+    <p class="couple" data-k="coupleLine"></p>
+    <button class="open-btn" id="open" type="button">Tap to Open →</button>
+  </div>
+</div>
+
+<script>
+/* ======================================================
+   ✏️ EDIT EVERYTHING HERE — all on-page text comes from this
+   ====================================================== */
+const INVITE = {
+  groom:        "Rohan",
+  bride:        "Meera",
+  initials:     "R&M",
+  groomParents: "S/o Smt. Anita & Sh. Rajesh Sharma",
+  brideParents: "D/o Smt. Kavita & Sh. Suresh Gupta",
+  blessing:     "॥ Shubh Vivah ॥",
+  verse:        "With joy in our hearts<br>and the blessings of our elders,<br>we invite you to the wedding of",
+  weekday:      "Sunday",
+  dayMonth:     "14<sup>th</sup> Feb",
+  year:         "2027",
+  dateLong:     "SUNDAY, 14<sup>TH</sup> FEBRUARY 2027",
+  time:         "7:30 pm onwards",
+  ceremony:     "Wedding Ceremony",
+  venue:        "The Grand Palace",
+  city:         "Jaipur",
+  mapQuery:     "The Grand Palace Jaipur",          // or paste a full Google Maps link
+  family:       "Sharma Family",
+  // Countdown target — keep the +05:30 for IST
+  dateTime:     "2027-02-14T19:30:00+05:30"
+};
+INVITE.coupleLine = `${INVITE.groom} & ${INVITE.bride}`;
+
+/* ---------- fill the page ---------- */
+document.querySelectorAll('[data-k]').forEach(el=>{
+  const v = INVITE[el.dataset.k] ?? '';
+  el.hasAttribute('data-html') ? el.innerHTML = v : el.textContent = v;
+});
+document.getElementById('maplink').href = /^https?:/.test(INVITE.mapQuery)
+  ? INVITE.mapQuery
+  : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(INVITE.mapQuery);
+document.getElementById('favicon').href = 'data:image/svg+xml,' + encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#5e0c18" stroke="#c4993f" stroke-width="2"/><text x="32" y="41" font-family="Georgia" font-style="italic" font-size="22" fill="#ecd08b" text-anchor="middle">${INVITE.initials.replace('&','&amp;')}</text></svg>`);
+
+/* ---------- curtain + music ---------- */
+const stage = document.getElementById('stage'), song = document.getElementById('song'), music = document.getElementById('music');
+let opened = false;
+function openInvite(){
+  if(opened) return; opened = true;
+  song.volume = .5;
+  song.play().then(()=>music.classList.add('playing')).catch(()=>{});
+  stage.classList.add('done');
+  music.classList.add('show');
+  setTimeout(()=>{ document.body.classList.remove('locked'); document.getElementById('cover').classList.add('go'); }, 900);
+  setTimeout(()=>stage.remove(), 3400);
+}
+document.getElementById('open').addEventListener('click', openInvite);
+music.addEventListener('click', ()=>{
+  if(song.paused){ song.play().catch(()=>{}); music.classList.add('playing'); music.setAttribute('aria-label','Pause music'); }
+  else { song.pause(); music.classList.remove('playing'); music.setAttribute('aria-label','Play music'); }
+});
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden && !song.paused){ song.pause(); song.dataset.resume='1'; } else if(!document.hidden && song.dataset.resume){ song.play().catch(()=>{}); delete song.dataset.resume; } });
+
+/* ---------- scratch card ---------- */
+const foil = document.getElementById('foil'), fx = foil.getContext('2d', {willReadFrequently:true});
+let scratching = false, revealed = false, last = null;
+function paintFoil(){
+  const r = foil.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+  foil.width = r.width*dpr; foil.height = r.height*dpr;
+  fx.setTransform(dpr,0,0,dpr,0,0);
+  fx.globalCompositeOperation = 'source-over';
+  const g = fx.createLinearGradient(0,0,r.width,r.height);
+  [['0','#f1d58f'],['.25','#c4993f'],['.5','#7d5d24'],['.75','#c4993f'],['1','#f1d58f']].forEach(([p,c])=>g.addColorStop(+p,c));
+  fx.fillStyle = g; fx.fillRect(0,0,r.width,r.height);
+  for(let i=0;i<40;i++){ fx.fillStyle=`rgba(255,248,215,${Math.random()*.35})`; fx.beginPath(); fx.arc(Math.random()*r.width,Math.random()*r.height,Math.random()*1.6+.3,0,7); fx.fill(); }
+  fx.fillStyle='rgba(60,8,16,.75)'; fx.textAlign='center'; fx.textBaseline='middle';
+  fx.font="16px Marcellus, serif"; fx.fillText('✦  SCRATCH HERE  ✦', r.width/2, r.height/2-6);
+  fx.font="italic 13px 'Cormorant Garamond', serif"; fx.fillText('to see the date', r.width/2, r.height/2+16);
+  fx.globalCompositeOperation = 'destination-out';
+  fx.lineCap = fx.lineJoin = 'round'; fx.lineWidth = 44;
+}
+function pt(e){ const r = foil.getBoundingClientRect(); return {x:e.clientX-r.left, y:e.clientY-r.top}; }
+function stroke(p){
+  fx.beginPath();
+  if(last){ fx.moveTo(last.x,last.y); fx.lineTo(p.x,p.y); fx.stroke(); }
+  else { fx.arc(p.x,p.y,22,0,7); fx.fill(); }
+  last = p;
+}
+function cleared(){
+  const d = fx.getImageData(0,0,foil.width,foil.height).data; let clear=0, n=0;
+  for(let i=3;i<d.length;i+=64){ n++; if(d[i]<40) clear++; }
+  return clear/n;
+}
+function finish(){
+  if(revealed) return; revealed = true;
+  foil.style.opacity = 0; setTimeout(()=>foil.remove(), 850); confetti();
+}
+foil.addEventListener('pointerdown', e=>{ scratching=true; last=null; foil.setPointerCapture(e.pointerId); stroke(pt(e)); });
+foil.addEventListener('pointermove', e=>{ if(!scratching) return; e.preventDefault(); stroke(pt(e)); });
+['pointerup','pointercancel'].forEach(t=>foil.addEventListener(t, ()=>{ scratching=false; last=null; if(cleared()>.45) finish(); }));
+document.fonts.ready.then(paintFoil);
+let rw; addEventListener('resize', ()=>{ clearTimeout(rw); rw=setTimeout(()=>{ if(!revealed) paintFoil(); },150); });
+
+/* ---------- confetti ---------- */
+function confetti(){
+  const c = document.createElement('canvas'); c.id='burst'; document.body.appendChild(c);
+  const x = c.getContext('2d'); c.width=innerWidth; c.height=innerHeight;
+  const cols = ['#c4993f','#5e0c18','#ecd08b','#80612a','#fff3d6','#a3283a'];
+  const bits = Array.from({length:140}, ()=>({
+    x:innerWidth/2, y:innerHeight*.55, vx:(Math.random()-.5)*13, vy:-Math.random()*15-3,
+    w:Math.random()*6+4, h:Math.random()*8+5, c:cols[Math.random()*cols.length|0],
+    a:Math.random()*6, va:(Math.random()-.5)*.35, life:1
+  }));
+  (function draw(){
+    x.clearRect(0,0,c.width,c.height); let alive=0;
+    for(const b of bits){
+      b.vy+=.28; b.vx*=.99; b.x+=b.vx; b.y+=b.vy; b.a+=b.va; b.life-=.007;
+      if(b.life<=0) continue; alive++;
+      x.save(); x.translate(b.x,b.y); x.rotate(b.a); x.globalAlpha=b.life; x.fillStyle=b.c;
+      x.fillRect(-b.w/2,-b.h/2,b.w,b.h*Math.abs(Math.cos(b.a*2))); x.restore();
+    }
+    alive ? requestAnimationFrame(draw) : c.remove();
+  })();
+}
+
+/* ---------- countdown ---------- */
+const target = new Date(INVITE.dateTime).getTime(), pad = n=>String(n).padStart(2,'0');
+function tickClock(){
+  const t = Math.max(0, target-Date.now());
+  document.getElementById('d').textContent = pad(Math.floor(t/864e5));
+  document.getElementById('h').textContent = pad(Math.floor(t/36e5)%24);
+  document.getElementById('m').textContent = pad(Math.floor(t/6e4)%60);
+  document.getElementById('s').textContent = pad(Math.floor(t/1e3)%60);
+  if(t===0) document.getElementById('over').hidden = false;
+}
+tickClock(); setInterval(tickClock, 1000);
+
+/* ---------- scroll fade-ins ---------- */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
